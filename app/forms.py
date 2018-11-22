@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, Email, EqualTo
 
 class LoginForm(FlaskForm):
   username = StringField('username', validators = [DataRequired()])
@@ -17,3 +17,4 @@ class RegistrationForm(FlaskForm):
 
   def validate_username(self, username):
     user = User.query.filter_by(username=username.data)
+
